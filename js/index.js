@@ -452,6 +452,8 @@ function initBackgroundSlideshow() {
      * Gets the next pokemon from the current queue
      * If queue is empty or exhausted, creates a new shuffled queue
      */
+
+//UN-COMMENT THIS FUNCTION TO ENABLE THE NO-REPEAT POKEMON SYSTEM
     // function getNextPokemon() {
     //     // If we need a new queue (first run or exhausted current queue)
     //     if (pokemonQueue.length === 0 || pokemonQueueIndex >= pokemonQueue.length) {
