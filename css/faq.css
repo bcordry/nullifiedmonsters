@@ -1,120 +1,286 @@
 /* faq.css - Styles specific to the FAQ page */
 
-/* Container for the FAQ section */
+/* =====================
+   PAGE SECTION
+   ===================== */
+
+/* Outer wrapper for the entire FAQ section */
 .faq-section {
-  /* Add vertical spacing above and below the FAQ section */
+  /* Vertical breathing room above and below the content */
   padding: 2rem 0;
-  /* Use a subtle background color to distinguish the FAQ area */
+  /* Use the site's primary gray background variable */
   background: var(--primary-gray);
 }
 
-/* Main FAQ list container */
+/* =====================
+   CATEGORY TITLES
+   ===================== */
+
+/* Shared base styles for all three category titles */
+.faq-category-title {
+  /* Center the title above its question group */
+  text-align: center;
+  /* Use the display font for impact */
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  /* Large, prominent size */
+  font-size: 2rem;
+  /* Space above each category title to separate it from the previous group */
+  margin-top: 3rem;
+  /* Small gap between the title and the questions below */
+  margin-bottom: 1.2rem;
+  /* Uppercase for a bold, clean look */
+  text-transform: uppercase;
+  /* Track letters out slightly for readability */
+  letter-spacing: 0.08em;
+  /* Relative positioning so the underline pseudo-element can anchor to it */
+  position: relative;
+  /* Padding below to make room for the decorative underline */
+  padding-bottom: 0.5rem;
+}
+
+/* Decorative underline bar beneath each category title */
+.faq-category-title::after {
+  /* Required for pseudo-elements to appear */
+  content: '';
+  /* Make it a block so it sits on its own line */
+  display: block;
+  /* Centered under the title text */
+  margin: 0.4rem auto 0;
+  /* Fixed width for the accent bar */
+  width: 60px;
+  /* Thin bar height */
+  height: 3px;
+  /* Rounded ends for a polished look */
+  border-radius: 2px;
+  /* Default color — overridden per category below */
+  background: currentColor;
+}
+
+/* OPERATION category — blue accent */
+.faq-category-title.cat-operation {
+  /* Steel/tech blue to suggest systems and setup */
+  color: #4a90d9;
+}
+
+/* GAMEPLAY category — green accent */
+.faq-category-title.cat-gameplay {
+  /* Earthy green to suggest adventure and exploration */
+  color: #5aab6e;
+}
+
+/* COMMUNITY category — gold/amber accent */
+.faq-category-title.cat-community {
+  /* Warm gold to suggest togetherness and energy */
+  color: #c9a227;
+}
+
+/* =====================
+   FAQ LIST CONTAINER
+   ===================== */
+
+/* Wrapper for each group of FAQ items under a category */
 .faq-list {
-  /* Limit the width for readability and center it */
+  /* Constrain width for readability */
   max-width: 700px;
+  /* Center the list horizontally */
   margin: 0 auto;
-  /* Add some spacing between FAQ items */
+  /* Stack items vertically with consistent spacing */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Each FAQ item (question + answer) */
+/* =====================
+   FAQ ITEMS
+   ===================== */
+
+/* Individual FAQ card (question + answer) */
 .faq-item {
-  /* Add a border and rounded corners for separation */
-  border: 1px solid #e0e0e0;
+  /* Rounded corners for a card-like appearance */
   border-radius: 8px;
+  /* White background to stand out from the page */
   background: #fff;
-  /* Add a subtle box shadow for depth */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  /* Subtle shadow for depth */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  /* Hide overflow so the border-left color doesn't bleed */
   overflow: hidden;
+  /* Smooth shadow transition on hover */
   transition: box-shadow 0.2s;
+  /* Default left border — overridden per category below */
+  border-left: 4px solid transparent;
+  /* Thin outer border for structure */
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-/* Highlight FAQ item on hover */
+/* Deepen the shadow when hovering over an item */
 .faq-item:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.09);
 }
 
-/* FAQ question button */
+/* Left accent border for OPERATION items */
+.cat-operation + .faq-list .faq-item {
+  border-left-color: #4a90d9;
+}
+
+/* Left accent border for GAMEPLAY items */
+.cat-gameplay + .faq-list .faq-item {
+  border-left-color: #5aab6e;
+}
+
+/* Left accent border for COMMUNITY items */
+.cat-community + .faq-list .faq-item {
+  border-left-color: #c9a227;
+}
+
+/* =====================
+   QUESTION BUTTON
+   ===================== */
+
+/* The clickable question button inside each FAQ item */
 .faq-question {
-  /* Make the button fill the width of the container */
+  /* Fill the full width of the card */
   width: 100%;
-  /* Remove default button styles */
+  /* Remove default browser button styling */
   background: none;
   border: none;
   outline: none;
-  /* Use site font and size */
+  /* Display font for the question text */
   font-family: 'Bebas Neue', 'Manrope', Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
+  /* Left-align the question text */
   text-align: left;
-  /* Add padding for clickable area */
-  padding: 1.2rem 1.5rem;
-  /* Cursor pointer for interactivity */
+  /* Comfortable click target padding */
+  padding: 1.2rem 3rem 1.2rem 1.5rem;
+  /* Show pointer cursor to indicate it's clickable */
   cursor: pointer;
-  /* Add a transition for background color */
+  /* Smooth background transition on hover */
   transition: background 0.2s;
-  /* Slightly darker text */
+  /* Dark text for readability */
   color: #222;
-  /* Add a caret icon using a pseudo-element */
+  /* Needed to position the caret arrow */
   position: relative;
 }
 
+/* Subtle highlight when hovering the question */
+.faq-question:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+/* Caret arrow on the right side of the question */
 .faq-question::after {
-  /* Add a down arrow (caret) to the right of the question */
+  /* Down-pointing triangle character */
   content: '▼';
+  /* Absolute position anchored to the right */
   position: absolute;
   right: 1.5rem;
   top: 50%;
+  /* Vertically center the caret */
   transform: translateY(-50%);
-  font-size: 1rem;
-  color: #888;
-  transition: transform 0.2s;
+  font-size: 0.85rem;
+  color: #aaa;
+  /* Smooth rotation when toggling open/closed */
+  transition: transform 0.25s;
 }
 
-/* When the FAQ item is open, rotate the caret */
+/* Rotate the caret upward when the item is open */
 .faq-item.open .faq-question::after {
   transform: translateY(-50%) rotate(-180deg);
 }
 
-/* FAQ answer (hidden by default) */
+/* =====================
+   ANSWER PANEL
+   ===================== */
+
+/* The answer text, hidden by default */
 .faq-answer {
-  /* Hide the answer by default */
+  /* Hidden until the item is opened */
   display: none;
-  /* Add padding for readability */
+  /* Padding: none on top (question already has bottom padding), sides and bottom */
   padding: 0 1.5rem 1.2rem 1.5rem;
-  /* Use a slightly lighter font */
+  /* Body font for answer text */
   font-family: 'Manrope', Arial, sans-serif;
   font-size: 1rem;
+  /* Softer text color for contrast with the question */
   color: #444;
+  /* Comfortable line height for longer answers */
   line-height: 1.6;
-  /* Animate the appearance */
+  /* Fade in when revealed */
   animation: fadeIn 0.3s;
 }
 
-/* Show the answer when the item is open */
+/* Paragraphs inside answers get a small top margin for spacing */
+.faq-answer p {
+  margin-top: 0.6rem;
+}
+
+/* Remove top margin from the very first paragraph */
+.faq-answer p:first-child {
+  margin-top: 0;
+}
+
+/* Show the answer when the parent item has the 'open' class */
 .faq-item.open .faq-answer {
   display: block;
 }
 
-/* Simple fade-in animation for answers */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* =====================
+   DAMAGE CALC BLOCK
+   ===================== */
+
+/* Monospace block used to display damage calculation examples */
+.damage-calc-example {
+  /* Light gray background to distinguish it from regular text */
+  background: #f0f0f0;
+  /* Inner spacing */
+  padding: 10px 14px;
+  /* Rounded corners */
+  border-radius: 4px;
+  /* Space above and below */
+  margin: 10px 0;
+  /* Monospace font for alignment */
+  font-family: monospace;
+  /* Slightly smaller than body text */
+  font-size: 0.9rem;
+  /* Ensure long lines wrap instead of overflowing */
+  word-break: break-word;
 }
 
-/* Responsive: reduce padding on small screens */
+/* =====================
+   ANIMATIONS
+   ===================== */
+
+/* Fade-in animation used when an answer is revealed */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+
+/* Adjustments for small screens */
 @media (max-width: 600px) {
+  /* Reduce outer section padding */
   .faq-section {
     padding: 1.5rem 0;
   }
+  /* Allow the list to fill the screen width with small side padding */
   .faq-list {
     max-width: 100%;
-    padding: 0 0.5rem;
+    padding: 0 0.75rem;
   }
-  .faq-question, .faq-answer {
+  /* Reduce inner padding on small screens */
+  .faq-question,
+  .faq-answer {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  /* Slightly smaller category title on mobile */
+  .faq-category-title {
+    font-size: 1.6rem;
   }
 }
