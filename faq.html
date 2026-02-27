@@ -38,53 +38,35 @@
             </button>
             <!-- Navigation links to all main pages -->
             <ul class="nav-menu">
-                <!-- Standard nav links -->
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-
-                <!-- LAUNCH RACE nav item — links to about.html but styled as the event button -->
-                <!-- nav-item-launch-event gives it position:relative so the tooltip can anchor to it -->
-                <!-- nav-link-event applies the gold color and hover styles -->
+                <li><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item-launch-event">
                     <a href="launch-race.html" class="nav-link nav-link-event">
                         Launch Event
-                        <span class="nav-event-tooltip" id="launch-event-tooltip">
-                            Loading countdown...
-                        </span>
+                        <span class="nav-event-tooltip" id="launch-event-tooltip">Loading countdown...</span>
                     </a>
                 </li>
-
                 <li><a href="about.html" class="nav-link">About</a></li>
+                <!-- FAQ is the active page -->
                 <li><a href="faq.html" class="nav-link active">FAQ</a></li>
-                <!-- <li><a href="news.html" class="nav-link">News</a></li> -->
                 <li><a href="patch-applier.html" class="nav-link">Patch</a></li>
-
-                <!-- TEMPORARILY UNAVAILABLE nav items (struck out) -->
-                <!-- class="nav-link-unavailable" disables the link and shows a tooltip on hover -->
                 <li class="nav-item-unavailable">
-                    <!-- href="#" prevents navigation; JS/CSS will block clicks visually -->
                     <a href="#" class="nav-link nav-link-unavailable" onclick="return false;">
                         <s>Pokédex</s>
-                        <!-- Tooltip shown on hover explaining why this is unavailable -->
                         <span class="nav-unavailable-tooltip">Available after the Launch Event</span>
                     </a>
                 </li>
-
-                <!-- Tracker is not yet available, strikethrough for now-->
                 <li class="nav-item-unavailable">
                     <a href="#" class="nav-link nav-link-unavailable" onclick="return false;">
                         <s>Tracker</s>
-                        <!-- Tooltip shown on hover explaining why this is unavailable -->
                         <span class="nav-unavailable-tooltip">Available after the Launch Event</span>
                     </a>
                 </li>
-
                 <li class="nav-item-unavailable">
                     <a href="#" class="nav-link nav-link-unavailable" onclick="return false;">
                         <s>Trainer Docs</s>
                         <span class="nav-unavailable-tooltip">Available after the Launch Event</span>
                     </a>
                 </li>
-
                 <li class="nav-item-unavailable">
                     <a href="#" class="nav-link nav-link-unavailable" onclick="return false;">
                         <s>Damage Calc</s>
@@ -97,92 +79,204 @@
 
     <!-- Main content area -->
     <main class="main">
-        <!-- FAQ Section -->
         <section class="faq-section">
             <div class="container">
+                <!-- Main page title -->
                 <h2 class="section-title">Frequently Asked Questions</h2>
+
+                <!-- =====================
+                     OPERATION SECTION
+                     Topics: setup, access, cost, emulators, updates, bugs
+                     ===================== -->
+                <!-- cat-operation class applies the blue color and accent bar -->
+                <h3 class="faq-category-title cat-operation">Operation</h3>
                 <div class="faq-list">
-                    <!-- Each FAQ item: question (button) and answer (hidden by default) -->
+
+                    <!-- What is Pokémon Null? -->
                     <div class="faq-item">
-                            <button class="faq-question">What is Pokémon Null?</button>
-                            <div class="faq-answer">Pokémon Null is a carefully-crafted difficulty-driven Nuzlocke-focused ROM hack based on the Hoenn Region. It consists of over 275 battles, both singles and doubles, and many with never-before-seen gimmicks. It's a new era in difficulty Nuzlocking.</div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question">How do I apply the patch?</button>
-                            <div class="faq-answer">Please find instructions on the <a href="patch-applier.html">Patch Applier</a> page. It's very simple, don't worry!</div>
-                        </div>    
-                    
-                    <div class="faq-item">
-                            <button class="faq-question">Why is the Level Cap for the first Gym so high?</button>                                  
+                        <button class="faq-question">What is Pokémon Null?</button>
                         <div class="faq-answer">
-                            <p>This project is designed first and foremost around a balanced, Nuzlocke-oriented experience with naturally scaling difficulty. At very low levels, Pokémon battles suffer from extreme damage variance due to the nature of the damage formula. Small level differences create disproportionately large power swings.</p>
-                            <p>If the player is even slightly overleveled, they gain an overwhelming advantage. Conversely, once the AI catches up, that advantage often flips sharply in the AI’s favor to an extent that is rarely perceived as fun. This results in an unhealthy difficulty curve where early trainers are trivial, followed by sudden and severe difficulty spikes. Damage calculations at low levels illustrate this clearly: a difference of just one or two levels can mean the difference between a guaranteed 2HKO and a guaranteed OHKO.</p>
-                            <p>At higher levels, damage scales far more smoothly. Level differences still matter, but they do not radically alter outcomes, creating a more stable and predictable battle environment. This is the level range I consider balanced and appropriate for a challenging but fair Nuzlocke experience.</p>
-                            <div class="damage-calc-example" style="background: #f0f0f0; padding: 10px; border-radius: 4px; margin: 10px 0; font-family: monospace; font-size: 0.9rem;">
-                                <strong>Low Level Variance:</strong><br>
-                                Lvl 4 vs Lvl 5: 12-16 (50 - 66.6%) -- guaranteed 2HKO<br>
-                                Lvl 5 vs Lvl 5: 20-24 (83.3 - 100%) -- 6.3% chance to OHKO<br>
-                                Lvl 6 vs Lvl 5: 24-30 (100 - 125%) -- guaranteed OHKO<br><br>
-                                <strong>High Level Stability:</strong><br>
-                                Lvl 79 vs Lvl 80: 168-198 (70.5 - 83.1%) -- guaranteed 2HKO<br>
-                                Lvl 80 vs Lvl 80: 176-208 (73.9 - 87.3%) -- guaranteed 2HKO<br>
-                                Lvl 81 vs Lvl 80: 178-210 (74.7 - 88.2%) -- guaranteed 2HKO
-                            </div>
-                            <p>Thematically, the higher level cap reinforces the idea of a training arc before challenging the first Gym. Gym Leaders are officially employed by the Pokémon League and are among the strongest trainers in the region; a weak first Gym centered around a low-level Geodude would not make narrative sense in this setting.</p>
+                            Pokémon Null is a carefully crafted, difficulty-driven, Nuzlocke-focused ROM hack based on the Hoenn region. It consists of over 275 battles — both singles and doubles — many of which feature never-before-seen gimmicks. It aims to define a new era in difficulty Nuzlocking.
                         </div>
                     </div>
+
+                    <!-- Is Pokémon Null free? -->
+                    <div class="faq-item">
+                        <button class="faq-question">Is Pokémon Null free to play?</button>
+                        <div class="faq-answer">
+                            Yes, Pokémon Null is completely free to download and play. No purchase is required, and the project is strictly non-commercial.
+                        </div>
+                    </div>
+
+                    <!-- Which emulator? -->
+                    <div class="faq-item">
+                        <button class="faq-question">Which emulator should I use?</button>
+                        <div class="faq-answer">
+                            We strongly recommend mGBA or VisualBoyAdvance for the best experience. Other emulators may not support all features or may cause compatibility issues.
+                        </div>
+                    </div>
+
+                    <!-- Who created it? -->
+                    <div class="faq-item">
+                        <button class="faq-question">Who created Pokémon Null?</button>
+                        <div class="faq-answer">
+                            Pokémon Null was created by Terra, a passionate developer, experienced Nuzlocker, and long-time fan of the Pokémon franchise. The project is a fan-made ROM hack and is not affiliated with or endorsed by Nintendo, Game Freak, or The Pokémon Company.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- =====================
+                     GAMEPLAY SECTION
+                     Topics: mechanics, difficulty, starters, legendaries, cheats, casual mode
+                     ===================== -->
+                <!-- cat-gameplay class applies the green color and accent bar -->
+                <h3 class="faq-category-title cat-gameplay">Gameplay</h3>
+                <div class="faq-list">
+
+                    <!-- Starters -->
+                    <div class="faq-item">
+                        <button class="faq-question">What are the starter Pokémon, and why were they chosen?</button>
+                        <div class="faq-answer">
+                            <p>In Pokémon Null, the starter Pokémon are Chespin, Fennekin, and Froakie. These Pokémon were selected because they are naturally well-balanced and closely matched in overall viability, which supports a fair and consistent Nuzlocke experience.</p>
+                            <p>Their respective strengths and weaknesses create meaningful strategic differences without any one option being clearly dominant. While personal preference played no significant role in the design process, it is worth noting that Greninja is the creator's favorite Pokémon, which may have had a minor influence on the final selection.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level cap -->
+                    <div class="faq-item">
+                        <button class="faq-question">Why is the Level Cap for the first Gym so high?</button>
+                        <div class="faq-answer">
+                            <p>This project is designed first and foremost around a balanced, Nuzlocke-oriented experience with naturally scaling difficulty. At very low levels, Pokémon battles suffer from extreme damage variance due to how the damage formula works. Small level differences create disproportionately large power swings.</p>
+                            <p>If the player is even slightly overleveled, they gain an overwhelming advantage. Conversely, once the AI catches up, that advantage often flips sharply in the AI's favor to an extent that is rarely perceived as fun. This results in an unhealthy difficulty curve where early trainers are trivial, followed by sudden and severe difficulty spikes. Damage calculations at low levels illustrate this clearly: a difference of just one or two levels can mean the difference between a guaranteed 2HKO and a guaranteed OHKO.</p>
+                            <p>At higher levels, damage scales far more smoothly. Level differences still matter, but they do not radically alter outcomes, creating a more stable and predictable battle environment. This is the level range I consider balanced and appropriate for a challenging but fair Nuzlocke experience.</p>
+                            <div class="damage-calc-example">
+                                <strong>Low-Level Variance:</strong><br>
+                                Lvl 4 vs Lvl 5: 12–16 (50–66.6%) — guaranteed 2HKO<br>
+                                Lvl 5 vs Lvl 5: 20–24 (83.3–100%) — 6.3% chance to OHKO<br>
+                                Lvl 6 vs Lvl 5: 24–30 (100–125%) — guaranteed OHKO<br><br>
+                                <strong>High-Level Stability:</strong><br>
+                                Lvl 79 vs Lvl 80: 168–198 (70.5–83.1%) — guaranteed 2HKO<br>
+                                Lvl 80 vs Lvl 80: 176–208 (73.9–87.3%) — guaranteed 2HKO<br>
+                                Lvl 81 vs Lvl 80: 178–210 (74.7–88.2%) — guaranteed 2HKO
+                            </div>
+                            <p>Thematically, the higher level cap also reinforces the idea of a training arc before challenging the first Gym. Gym Leaders are officially employed by the Pokémon League and are among the strongest trainers in the region; a weak first Gym centered around a low-level Geodude would not make narrative sense in this setting.</p>
+                        </div>
+                    </div>
+
+                    <!-- Status immunity bypass -->
+                    <div class="faq-item">
+                        <button class="faq-question">Why can certain Pokémon be inflicted with a status condition they are normally immune to?</button>
+                        <div class="faq-answer">
+                            <p>Some mechanics in the game are intentionally designed to bypass standard type-based status immunities.</p>
+                            <p>For example, early in the game you may encounter a Lapras that knows Soak and Tri Attack. Soak changes the target's type to Water, temporarily removing its original type-based immunities. This allows Tri Attack to inflict burn, freeze, or paralysis even on Pokémon that would normally be immune.</p>
+                            <p>Similarly, wild Salandit possess the Ability Corrosion, which allows them to poison any Pokémon regardless of its type. Combined with moves such as Poison Gas or Toxic, this enables them to inflict poison even on Poison- or Steel-type Pokémon.</p>
+                        </div>
+                    </div>
+
+                    <!-- Legendaries -->
                     <div class="faq-item">
                         <button class="faq-question">Why do some Legendary Pokémon appear early, and why do regular Trainers use them?</button>
                         <div class="faq-answer">
-                            <p>Within the story of Pokémon Null, most Legendary Pokémon have reproduced over time and, as a result, lost their unique "Legendary" status. Consequently, Pokémon such as Mesprit or Solgaleo are no longer treated as legendaries in either a narrative or gameplay sense. Within this canon, the only Pokémon considered truly legendary are Groudon, Kyogre, and Rayquaza.</p>
-                            <p>From a balance perspective, this choice allows the game to meaningfully incorporate every Pokémon rather than reserving traditionally powerful species exclusively for the late game. This prevents excessive legendary concentration later in the game and ensures players encounter a wide variety of species throughout the entire journey.</p>
-                            <p>Ultimately, this design philosophy aims to demonstrate that a fair and engaging challenge is possible even when facing "Legendary" Pokémon, provided the encounters are constructed thoughtfully.</p>
+                            <p>Within the story of Pokémon Null, most Legendary Pokémon have reproduced over time and, as a result, lost their unique "legendary" status. Consequently, Pokémon such as Mesprit or Solgaleo are no longer treated as legendaries in either a narrative or gameplay sense. Within this canon, the only Pokémon considered truly legendary are Groudon, Kyogre, and Rayquaza.</p>
+                            <p>From a balance perspective, this choice allows the game to meaningfully incorporate every Pokémon rather than reserving traditionally powerful species exclusively for the late game. This prevents excessive legendary concentration later on and ensures players encounter a wide variety of species throughout the entire journey.</p>
+                            <p>Ultimately, this design philosophy aims to demonstrate that a fair and engaging challenge is possible even when facing "legendary" Pokémon, provided the encounters are constructed thoughtfully.</p>
                         </div>
                     </div>
+
+                    <!-- Type: Null / Navel Rock -->
                     <div class="faq-item">
                         <button class="faq-question">Where do you obtain Type: Null? How do you access Navel Rock and Southern Island?</button>
                         <div class="faq-answer">
                             <p>After defeating both your Rival and Steve on Route 119, Scott will appear and grant you a special ticket. This ticket allows you to travel from Lilycove Harbor to these additional locations, where you can encounter Type: Null and explore the islands.</p>
                         </div>
                     </div>
+
+                    <!-- Casual mode -->
                     <div class="faq-item">
-                        <button class="faq-question">Which emulator should I use?</button>
-                        <div class="faq-answer">Please use mGBA or VisualBoyAdvance for the best experience. Other emulators may not support all features or may cause compatibility issues.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Is Pokémon Null free to play?</button>
-                        <div class="faq-answer">Yes, Pokémon Null is completely free to download and play. No purchase is required.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Can I play Pokémon Null on mobile?</button>
-                        <div class="faq-answer">Yes, Pokémon Null can be played on mobile devices using compatible emulators. However, performance may vary depending on your device's capabilities and the emulator used.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Where can I find updates?</button>
-                        <div class="faq-answer">Patch Updates are posted on the Patch page and Discord. Make sure to check back regularly for new patches and content. Updates will always be announced on the Discord.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">How do I report a bug?</button>
-                        <div class="faq-answer">Please report bugs on the official Discord server. Include details about the bug, steps to reproduce it, and any relevant screenshots or videos.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Is there a Discord or community?</button>
-                        <div class="faq-answer">Yes, there is an official Discord server where you can find community discussions, updates, and support! Join the community to stay informed and connect with other players!</div>
+                        <button class="faq-question">How can I enable Casual mode?</button>
+                        <div class="faq-answer">
+                            In the player's house, interact with your GameCube to enable Casual mode. This option is intended for players who want a slightly more forgiving experience while still engaging with the core design of Pokémon Null.
+                        </div>
                     </div>
 
+                    <!-- Difficulty / "This is Bullshit!" -->
+                    <div class="faq-item">
+                        <button class="faq-question">Why is this game so difficult? This is bullshit!</button>
+                        <div class="faq-answer">
+                            <p>This project is intentionally designed for a very specific audience: players who are already highly experienced with Nuzlocke challenges and have completed some of the most demanding ROM hacks available. As such, the difficulty accurately reflects the intended target audience.</p>
+                            <p>The game assumes a high level of mechanical knowledge, planning, and adaptability from the player, and it does not attempt to accommodate more casual playstyles. Even for its intended audience, the difficulty is deliberately pushed beyond comfort levels, with the goal of forcing players to struggle, adapt, and meaningfully improve rather than rely on familiar solutions.</p>
+                            <p>If this level of challenge is not enjoyable for you, that is completely understandable — difficulty preferences vary widely. In that case, there are many excellent ROM hacks with a more moderate difficulty curve, such as FireRed Omega or Renegade Platinum, which may better suit your tastes. After gaining experience with such projects, this game may become more approachable and enjoyable, as player proficiency naturally develops over time.</p>
+                        </div>
+                    </div>
+
+                    <!-- Cheats -->
                     <div class="faq-item">
                         <button class="faq-question">Are there any cheats or codes?</button>
-                        <div class="faq-answer">No, there are no official cheats or codes for Pokémon Null. The game is designed to be played without any external modifications. The difficulty is fine-tuned to be a brutal experience, and cheats would break this balance.</div>
+                        <div class="faq-answer">
+                            No, there are no official cheats or codes for Pokémon Null. The game is designed to be played without external modifications. The difficulty is tightly tuned to create a specific experience, and cheats would break this balance.
+                        </div>
                     </div>
 
+                </div>
+
+                <!-- =====================
+                     COMMUNITY SECTION
+                     Topics: Discord, updates, bugs, guides, contributions, contact
+                     ===================== -->
+                <!-- cat-community class applies the gold color and accent bar -->
+                <h3 class="faq-category-title cat-community">Community</h3>
+                <div class="faq-list">
+
+                    <!-- Discord / community -->
+                    <div class="faq-item">
+                        <button class="faq-question">Is there a Discord or community?</button>
+                        <div class="faq-answer">
+                            Yes! There is an official Discord server where you can find community discussions, updates, and support. It's the best place to share strategies, report bugs, and connect with other players working through Pokémon Null.
+                        </div>
+                    </div>
+
+                    <!-- Where to find updates -->
+                    <div class="faq-item">
+                        <button class="faq-question">Where can I find updates?</button>
+                        <div class="faq-answer">
+                            Patch updates are posted on the Patch page and in the Discord server. Updates will always be announced on Discord first, so we recommend keeping an eye on the announcement channels there.
+                        </div>
+                    </div>
+
+                    <!-- How to report a bug -->
+                    <div class="faq-item">
+                        <button class="faq-question">How do I report a bug?</button>
+                        <div class="faq-answer">
+                            Please report bugs on the official Discord server. Include as many details as possible — where the bug occurred, what you were doing, and any relevant screenshots or videos. Clear reports make it much easier to diagnose and fix issues.
+                        </div>
+                    </div>
+
+                    <!-- Walkthrough / guide -->
                     <div class="faq-item">
                         <button class="faq-question">Is there a walkthrough or guide?</button>
-                        <div class="faq-answer">Not yet! I want the game to be a community-driven experience, so I encourage players to share their own strategies on the official Discord server.</div>
+                        <div class="faq-answer">
+                            Not yet. The game is intended to be a community-driven experience, so players are encouraged to share their own strategies, team ideas, and discoveries on the official Discord server.
+                        </div>
                     </div>
+
+                    <!-- Contributions / future changes -->
                     <div class="faq-item">
-                        <button class="faq-question">Who created Pokémon Null?</button>
-                        <div class="faq-answer">Pokémon Null was created by Terra, a passionate developer, experienced Nuzlocker, and fan of the Pokémon franchise. The project is a fan-made ROM hack that intends no infringement on the Pokémon franchise or any of its associated intellectual property.</div>
+                        <button class="faq-question">Can I contribute to the game? Are further changes expected?</button>
+                        <div class="faq-answer">
+                            <p>The project is considered complete with regard to its core balance philosophy, and no further balance changes are planned. However, future updates may address bug fixes and include minor aesthetic or quality-of-life improvements.</p>
+                            <p>One area where contributions are welcome is the creation of custom trainer battle themes. If you have experience in this area and are familiar with the technical limitations of the Game Boy Advance, your input may be valuable. Interested contributors can reach out to <strong>._.terra._.</strong> on Discord.</p>
+                        </div>
                     </div>
+
+                    <!-- Can't find my question -->
+                    <div class="faq-item">
+                        <button class="faq-question">I can't find my question in the FAQ. What should I do?</button>
+                        <div class="faq-answer">
+                            If your question is not covered here, please consider joining the Discord server: [LINK HERE]. Before posting, we recommend using Discord's search function, as many common questions may already have been answered. If you are unable to find relevant information, feel free to ask in the appropriate channel — members of the community will be happy to help.
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -192,23 +286,21 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Project info -->
                 <div class="footer-section">
-                    <!-- Updated project name from Terra Emerald to Pokémon Null -->
                     <h4>Pokémon Null</h4>
-                    <p>A Nuzlocke-focused Pokémon ROM hack that redefines difficulty with a re-imagined story in Hoenn. Carefully crafted by Terra.</p>
+                    <p>A Nuzlocke-focused Pokémon ROM hack that redefines difficulty with a reimagined story in Hoenn. Carefully crafted by Terra.</p>
                 </div>
-                <!-- Quick links -->
+                <div class="footer-section">
+                <!-- Quick links column -->
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="patch-applier.html">Download</a></li>
-                        <li><a href="encounter-tracker.html">Encounter Tracker</a></li>
-                        <li><a href="pokedex.html">Pokédex</a></li>
-                        <li><a href="news.html">News</a></li>
+                        <!-- <li><a href="encounter-tracker.html">Encounter Tracker</a></li> -->
+                        <li><a href="about.html">Game Info</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
-                <!-- Community links -->
                 <div class="footer-section">
                     <h4>Community</h4>
                     <ul class="footer-links">
@@ -218,14 +310,13 @@
                     </ul>
                 </div>
             </div>
-            <!-- Copyright -->
             <div class="footer-bottom">
                 <p>2025 Pokémon Null Team and Terra. Pokémon is © Nintendo/Game Freak/The Pokémon Company. This is a non-commercial fan project. Website maintained by Brian Cordry.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Main and page-specific JS (update paths as per your structure) -->
+    <!-- Main and page-specific JS -->
     <script src="js/main.js"></script>
     <script src="js/news-data.js"></script>
     <script src="js/index.js"></script>
