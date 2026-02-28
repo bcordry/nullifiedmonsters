@@ -4,7 +4,62 @@
     <!-- Set character encoding and viewport for responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Null - Pokémon ROM Hack</title>
+<!-- =====================================================
+     FAVICON
+     rel="icon" = the small icon shown in the browser tab
+     rel="apple-touch-icon" = icon used when saving to iPhone/iPad home screen
+     type="image/png" = tells the browser what kind of file it is
+     ===================================================== -->
+<link rel="icon" type="image/png" href="assets/images/logos/nfaviconEMPTY.png">
+<link rel="apple-touch-icon" href="assets/images/logos/nfaviconEMPTY.png">
+
+<!-- =====================================================
+     SEO META TAGS
+     description = the text Google shows under your link in search results
+     theme-color = tints the browser bar on Android/Chrome to match your brand
+     ===================================================== -->
+<meta name="description" content="Pokémon Null is a Nuzlocke-focused ROM hack of Pokémon Emerald featuring 275+ hand-crafted trainer battles, Pokémon from Generations 1–9, new Mega Evolutions, and brutal difficulty.">
+<meta name="theme-color" content="#dc3545">
+
+<!-- =====================================================
+     CANONICAL URL
+     Tells Google which URL is the "official" version of this page.
+     Prevents duplicate content penalties if the page is ever accessed
+     from multiple URLs (e.g. with/without www, http vs https).
+     ===================================================== -->
+<link rel="canonical" href="http://pokemonnull.com/index.html">
+
+<!-- =====================================================
+     OPEN GRAPH TAGS (og:)
+     These control how your link looks when shared on Discord, Reddit,
+     Facebook, and most other platforms.
+     og:title    = bold title shown in the link preview
+     og:description = subtitle text shown under the title
+     og:image    = the big preview image (your background gif)
+     og:url      = the canonical URL of this specific page
+     og:type     = "website" for normal pages (vs "article" for blog posts)
+     og:site_name = the name of your overall site
+     ===================================================== -->
+<meta property="og:title" content="Pokémon Null — A Nuzlocke ROM Hack">
+<meta property="og:description" content="275+ hand-crafted battles. Generations 1–9. New Mega Evolutions. The hardest Nuzlocke ROM hack ever made.">
+<meta property="og:image" content="http://pokemonnull.com/assets/images/logos/fullbackground.gif">
+<meta property="og:url" content="http://pokemonnull.com/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pokémon Null">
+
+<!-- =====================================================
+     TWITTER CARD TAGS
+     These specifically control how your link looks on Twitter/X.
+     twitter:card    = "summary_large_image" shows a big image preview
+     twitter:title   = bold title in the tweet card
+     twitter:description = subtitle text in the tweet card
+     twitter:image   = the preview image (same as og:image)
+     ===================================================== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pokémon Null — A Nuzlocke ROM Hack">
+<meta name="twitter:description" content="275+ hand-crafted battles. Generations 1–9. New Mega Evolutions. The hardest Nuzlocke ROM hack ever made.">
+<meta name="twitter:image" content="http://pokemonnull.com/assets/images/logos/fullbackground.gif">
+
 
     <!-- Google Fonts: Bebas Neue for headers, Manrope for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,10 +212,10 @@
                 <h3 class="section-title">Latest Updates</h3>
                 <div class="news-cards">
                     <article class="news-card">
-                        <div class="news-date">2026-02-25</div>
-                        <h4>Release Date Announced!</h4>
-                        <p>The release date for Pokémon Null has been announced! The game will be available on March 2nd, 2026.</p>
-                        <a href="patch-applier.html" class="news-link">Read More</a>
+                        <div class="news-date">2026-02-27</div>
+                        <h4>Three Days until Launch Event!</h4>
+                        <p>We're happy to announce the Launch event for Pokémon Null, featuring your favorite streamers playing a single split of the game!</p>
+                        <a href="launch-race.html" class="news-link">Read More</a>
                     </article>
                     <article class="news-card">
                         <div class="news-date">2026-02-25</div>
@@ -170,9 +225,9 @@
                     </article>
                     <article class="news-card">
                         <div class="news-date">2026-02-25</div>
-                        <h4>Launch Event Announced!</h4>
-                        <p>We're happy to announce the Launch event for Pokémon Null, featuring your favorite streamers playing a single split of the game!</p>
-                        <a href="launch-event.html" class="news-link">Read More</a>
+                        <h4>Release Date Announced!</h4>
+                        <p>The release date for Pokémon Null has been announced! The game will be available on March 2nd, 2026.</p>
+                        <a href="patch-applier.html" class="news-link">Apply Patch</a>
                     </article>
                 </div>
             </div>
@@ -203,9 +258,9 @@
                 <div class="footer-section">
                     <h4>Community</h4>
                     <ul class="footer-links">
-                        <li><a href="https://discord.gg/DqxxC5KQ6r">Discord</a></li>
-                        <li><a href="https://www.reddit.com/r/PokemonNull/">Reddit</a></li>
-                        <li><a href="https://youtube.com/@pokemonnull-i7y?si=Midpr-BR4eoGoW2T">YouTube</a></li>
+                        <li><a href="https://discord.gg/DqxxC5KQ6r" target="_blank" class="nav-link">Discord</a></li>
+                        <li><a href="https://www.reddit.com/r/PokemonNull/" target="_blank" class="nav-link">Reddit</a></li>
+                        <li><a href="https://youtube.com/@pokemonnull-i7y?si=Midpr-BR4eoGoW2T" target="_blank" class="nav-link">YouTube</a></li>
                     </ul>
                 </div>
             </div>
@@ -219,7 +274,6 @@
 
     <!-- Main and page-specific JS (update paths as per your structure) -->
     <script src="js/main.js"></script>
-    <script src="js/news-data.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

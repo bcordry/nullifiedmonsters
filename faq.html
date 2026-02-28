@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Pokémon Null</title>
+        <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logos/nfaviconEMPTY.png">
+    <link rel="apple-touch-icon" href="assets/images/logos/nfaviconEMPTY.png">
+    <meta name="description" content="Frequently asked questions about Pokémon Null — setup, gameplay mechanics, difficulty, legendaries, community, and more.">
+    <meta name="theme-color" content="#dc3545">
+    <link rel="canonical" href="http://pokemonnull.com/faq.html">
+    <meta property="og:title" content="FAQ — Pokémon Null">
+    <meta property="og:description" content="Everything you need to know about Pokémon Null — setup, gameplay, difficulty, legendaries, and community.">
+    <meta property="og:image" content="http://pokemonnull.com/assets/images/logos/fullbackground.gif">
+    <meta property="og:url" content="http://pokemonnull.com/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pokémon Null">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ — Pokémon Null">
+    <meta name="twitter:description" content="Everything you need to know about Pokémon Null — setup, gameplay, difficulty, legendaries, and community.">
+    <meta name="twitter:image" content="http://pokemonnull.com/assets/images/logos/fullbackground.gif">
 
     <!-- Google Fonts: Bebas Neue for headers, Manrope for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +31,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/faq.css">
     <link rel="stylesheet" href="css/index.css">
+
 </head>
 
 <body>
@@ -112,7 +129,7 @@
                     <div class="faq-item">
                         <button class="faq-question">Which emulator should I use?</button>
                         <div class="faq-answer">
-                            We strongly recommend mGBA or VisualBoyAdvance for the best experience. Other emulators may not support all features or may cause compatibility issues.
+                            I strongly recommend mGBA or VisualBoyAdvance for the best experience. Other emulators may not support all features or may cause compatibility issues.
                         </div>
                     </div>
 
@@ -138,7 +155,7 @@
                     <div class="faq-item">
                         <button class="faq-question">What are the starter Pokémon, and why were they chosen?</button>
                         <div class="faq-answer">
-                            <p>In Pokémon Null, the starter Pokémon are Chespin, Fennekin, and Froakie. These Pokémon were selected because they are naturally well-balanced and closely matched in overall viability, which supports a fair and consistent Nuzlocke experience.</p>
+                            <p>In Pokémon Null, the starter Pokémon are <b>Chespin, Fennekin,</b> and <b>Froakie</b>. These Pokémon were selected because they are naturally well-balanced and closely matched in overall viability, which supports a fair and consistent Nuzlocke experience.</p>
                             <p>Their respective strengths and weaknesses create meaningful strategic differences without any one option being clearly dominant. While personal preference played no significant role in the design process, it is worth noting that Greninja is the creator's favorite Pokémon, which may have had a minor influence on the final selection.</p>
                         </div>
                     </div>
@@ -150,18 +167,27 @@
                             <p>This project is designed first and foremost around a balanced, Nuzlocke-oriented experience with naturally scaling difficulty. At very low levels, Pokémon battles suffer from extreme damage variance due to how the damage formula works. Small level differences create disproportionately large power swings.</p>
                             <p>If the player is even slightly overleveled, they gain an overwhelming advantage. Conversely, once the AI catches up, that advantage often flips sharply in the AI's favor to an extent that is rarely perceived as fun. This results in an unhealthy difficulty curve where early trainers are trivial, followed by sudden and severe difficulty spikes. Damage calculations at low levels illustrate this clearly: a difference of just one or two levels can mean the difference between a guaranteed 2HKO and a guaranteed OHKO.</p>
                             <p>At higher levels, damage scales far more smoothly. Level differences still matter, but they do not radically alter outcomes, creating a more stable and predictable battle environment. This is the level range I consider balanced and appropriate for a challenging but fair Nuzlocke experience.</p>
-                            <div class="damage-calc-example">
-                                <strong>Low-Level Variance:</strong><br>
-                                Lvl 4 vs Lvl 5: 12–16 (50–66.6%) — guaranteed 2HKO<br>
-                                Lvl 5 vs Lvl 5: 20–24 (83.3–100%) — 6.3% chance to OHKO<br>
-                                Lvl 6 vs Lvl 5: 24–30 (100–125%) — guaranteed OHKO<br><br>
-                                <strong>High-Level Stability:</strong><br>
-                                Lvl 79 vs Lvl 80: 168–198 (70.5–83.1%) — guaranteed 2HKO<br>
-                                Lvl 80 vs Lvl 80: 176–208 (73.9–87.3%) — guaranteed 2HKO<br>
-                                Lvl 81 vs Lvl 80: 178–210 (74.7–88.2%) — guaranteed 2HKO
-                            </div>
-                            <p>Thematically, the higher level cap also reinforces the idea of a training arc before challenging the first Gym. Gym Leaders are officially employed by the Pokémon League and are among the strongest trainers in the region; a weak first Gym centered around a low-level Geodude would not make narrative sense in this setting.</p>
-                        </div>
+                        <!-- Nested collapsible for the damage calculation example, lives INSIDE the answer -->
+                        <div class="calc-collapsible">
+                        <button class="calc-toggle">
+                    Full Damage Calculation Example
+                    <span class="calc-arrow">▼</span>
+                    </button>
+                    <div class="calc-body">
+                    <div class="damage-calc-example">
+                    <strong>Low-Level Variance:</strong><br>
+                    Lvl 4 31+ Atk Muscle Band Sheer Force <strong>Druddigon</strong> <em>Ice Punch</em> vs. Lvl 5 31 HP / 31 Def <strong>Druddigon</strong>: 12–16 (50–66.6%) — <strong>guaranteed 2HKO</strong><br>
+                    Lvl 5 31+ Atk Muscle Band Sheer Force <strong>Druddigon</strong> <em>Ice Punch</em> vs. Lvl 5 31 HP / 31 Def <strong>Druddigon</strong>: 20–24 (83.3–100%) — <strong>6.3% chance to OHKO</strong><br>
+                    Lvl 6 31+ Atk Muscle Band Sheer Force <strong>Druddigon</strong> <em>Ice Punch</em> vs. Lvl 5 31 HP / 31 Def <strong>Druddigon</strong>: 24–30 (100–125%) — <strong>guaranteed OHKO</strong><br><br>
+                    <strong>High-Level Stability:</strong><br>
+                    Lvl 79 31+ Atk Muscle Band Sheer Force <strong>Druddigon</strong> <em>Ice Punch</em> vs. Lvl 80 31 HP / 31 Def <strong>Druddigon</strong>: 168–198 (70.5–83.1%) — <strong>guaranteed 2HKO</strong><br>
+                    Lvl 80 31+ Atk Muscle Band Sheer Force <strong>Druddigon</strong> <em>Ice Punch</em> vs. Lvl 80 31 HP / 31 Def <strong>Druddigon</strong>: 176–208 (73.9–87.3%) — <strong>guaranteed 2HKO</strong><br>
+                    Lvl 81 31+ Atk Muscle Band Sheer Force <strong>Druddigon</strong> <em>Ice Punch</em> vs. Lvl 80 31 HP / 31 Def <strong>Druddigon</strong>: 178–210 (74.7–88.2%) — <strong>guaranteed 2HKO</strong>
+                    </div>
+                    </div>
+                    </div>
+                    <p>Thematically, the higher level cap also reinforces the idea of a training arc before challenging the first Gym. Gym Leaders are officially employed by the Pokémon League and are among the strongest trainers in the region; a weak first Gym centered around a low-level Geodude would not make narrative sense in this setting.</p>
+                    </div>
                     </div>
 
                     <!-- Status immunity bypass -->
@@ -169,8 +195,8 @@
                         <button class="faq-question">Why can certain Pokémon be inflicted with a status condition they are normally immune to?</button>
                         <div class="faq-answer">
                             <p>Some mechanics in the game are intentionally designed to bypass standard type-based status immunities.</p>
-                            <p>For example, early in the game you may encounter a Lapras that knows Soak and Tri Attack. Soak changes the target's type to Water, temporarily removing its original type-based immunities. This allows Tri Attack to inflict burn, freeze, or paralysis even on Pokémon that would normally be immune.</p>
-                            <p>Similarly, wild Salandit possess the Ability Corrosion, which allows them to poison any Pokémon regardless of its type. Combined with moves such as Poison Gas or Toxic, this enables them to inflict poison even on Poison- or Steel-type Pokémon.</p>
+                            <p>For example, early in the game you may encounter a Lapras that knows <i>Soak</i> and <i>Tri Attack</i>. <i>Soak</i> changes the target's type to Water, temporarily removing its original type-based immunities. This allows <i>Tri Attack</i> to inflict burn, freeze, or paralysis even on Pokémon that would normally be immune.</p>
+                            <p>Similarly, wild Salandit possess the Ability Corrosion, which allows them to poison any Pokémon regardless of its type. Combined with moves such as <i>Poison Gas</i> or <i>Toxic</i>, this enables them to inflict poison even on Poison- or Steel-type Pokémon.</p>
                         </div>
                     </div>
 
@@ -232,7 +258,7 @@
                     <div class="faq-item">
                         <button class="faq-question">Is there a Discord or community?</button>
                         <div class="faq-answer">
-                            Yes! There is an official Discord server where you can find community discussions, updates, and support. It's the best place to share strategies, report bugs, and connect with other players working through Pokémon Null.
+                            Yes! There is an official <a href="https://discord.gg/DqxxC5KQ6r">Pokémon Null Discord</a> server where you can find community discussions, updates, and support. It's the best place to share strategies, report bugs, and connect with other players working through Pokémon Null.
                         </div>
                     </div>
 
@@ -240,7 +266,7 @@
                     <div class="faq-item">
                         <button class="faq-question">Where can I find updates?</button>
                         <div class="faq-answer">
-                            Patch updates are posted on the Patch page and in the Discord server. Updates will always be announced on Discord first, so we recommend keeping an eye on the announcement channels there.
+                            Patch updates are posted on the Patch page and in the <a href="https://discord.gg/DqxxC5KQ6r">Pokémon Null Discord</a> server. Updates will always be announced on Discord first, so I recommend keeping an eye on the announcement channels there.
                         </div>
                     </div>
 
@@ -248,7 +274,7 @@
                     <div class="faq-item">
                         <button class="faq-question">How do I report a bug?</button>
                         <div class="faq-answer">
-                            Please report bugs on the official Discord server. Include as many details as possible — where the bug occurred, what you were doing, and any relevant screenshots or videos. Clear reports make it much easier to diagnose and fix issues.
+                            Please report bugs in the #bug-reports channel of the official <a href="https://discord.gg/DqxxC5KQ6r">Pokémon Null Discord</a> server. Include as many details as possible — where the bug occurred, what you were doing, and any relevant screenshots or videos. Clear reports make it much easier to diagnose and fix issues.
                         </div>
                     </div>
 
@@ -273,7 +299,7 @@
                     <div class="faq-item">
                         <button class="faq-question">I can't find my question in the FAQ. What should I do?</button>
                         <div class="faq-answer">
-                            If your question is not covered here, please consider joining the Discord server: [LINK HERE]. Before posting, we recommend using Discord's search function, as many common questions may already have been answered. If you are unable to find relevant information, feel free to ask in the appropriate channel — members of the community will be happy to help.
+                            If your question is not covered here, please consider joining the <a href="https://discord.gg/DqxxC5KQ6r">Pokémon Null Discord</a> server. Before posting, I recommend using Discord's search function, as many common questions may already have been answered. If you are unable to find relevant information, feel free to ask in the appropriate channel — members of the community will be happy to help.
                         </div>
                     </div>
 
@@ -290,7 +316,6 @@
                     <h4>Pokémon Null</h4>
                     <p>A Nuzlocke-focused Pokémon ROM hack that redefines difficulty with a reimagined story in Hoenn. Carefully crafted by Terra.</p>
                 </div>
-                <div class="footer-section">
                 <!-- Quick links column -->
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -304,9 +329,9 @@
                 <div class="footer-section">
                     <h4>Community</h4>
                     <ul class="footer-links">
-                        <li><a href="https://discord.gg/DqxxC5KQ6r">Discord</a></li>
-                        <li><a href="https://www.reddit.com/r/PokemonNull/">Reddit</a></li>
-                        <li><a href="https://youtube.com/@pokemonnull-i7y?si=Midpr-BR4eoGoW2T">YouTube</a></li>
+                        <li><a href="https://discord.gg/DqxxC5KQ6r" target="_blank" class="nav-link">Discord</a></li>
+                        <li><a href="https://www.reddit.com/r/PokemonNull/" target="_blank" class="nav-link">Reddit</a></li>
+                        <li><a href="https://youtube.com/@pokemonnull-i7y?si=Midpr-BR4eoGoW2T" target="_blank" class="nav-link">YouTube</a></li>
                     </ul>
                 </div>
             </div>
@@ -318,7 +343,6 @@
 
     <!-- Main and page-specific JS -->
     <script src="js/main.js"></script>
-    <script src="js/news-data.js"></script>
     <script src="js/index.js"></script>
     <script src="js/faq.js"></script>
 </body>

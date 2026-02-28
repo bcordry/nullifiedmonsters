@@ -1,8 +1,8 @@
 /* faq.css - Styles specific to the FAQ page */
 
-/* =====================
+/* ====
    PAGE SECTION
-   ===================== */
+   ==== */
 
 /* Outer wrapper for the entire FAQ section */
 .faq-section {
@@ -12,9 +12,9 @@
   background: var(--primary-gray);
 }
 
-/* =====================
+/* ====
    CATEGORY TITLES
-   ===================== */
+   ==== */
 
 /* Shared base styles for all three category titles */
 .faq-category-title {
@@ -74,9 +74,9 @@
   color: #c9a227;
 }
 
-/* =====================
+/* ====
    FAQ LIST CONTAINER
-   ===================== */
+   ==== */
 
 /* Wrapper for each group of FAQ items under a category */
 .faq-list {
@@ -90,9 +90,9 @@
   gap: 1.5rem;
 }
 
-/* =====================
+/* ====
    FAQ ITEMS
-   ===================== */
+   ==== */
 
 /* Individual FAQ card (question + answer) */
 .faq-item {
@@ -134,9 +134,9 @@
   border-left-color: #c9a227;
 }
 
-/* =====================
+/* ====
    QUESTION BUTTON
-   ===================== */
+   ==== */
 
 /* The clickable question button inside each FAQ item */
 .faq-question {
@@ -149,7 +149,7 @@
   /* Display font for the question text */
   font-family: 'Bebas Neue', 'Manrope', Arial, sans-serif;
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 550;
   /* Left-align the question text */
   text-align: left;
   /* Comfortable click target padding */
@@ -190,9 +190,9 @@
   transform: translateY(-50%) rotate(-180deg);
 }
 
-/* =====================
+/* ====
    ANSWER PANEL
-   ===================== */
+   ==== */
 
 /* The answer text, hidden by default */
 .faq-answer {
@@ -226,9 +226,34 @@
   display: block;
 }
 
-/* =====================
+/* ====
+   FAQ ANSWER LINK OVERRIDES
+   The FAQ answer panels have a WHITE background (.faq-item background: #fff),
+   so the global white link color from styles.css would be invisible here.
+   We override just the links inside .faq-answer to use dark colors instead.
+   ==== */
+
+/* Unvisited links inside FAQ answers: dark charcoal so they're visible on white */
+.faq-answer a:link {
+  color: #222222; /* Dark near-black — clearly readable on the white FAQ card background */
+  text-decoration: underline; /* Keep underline so it's obvious it's a link, not body text */
+  text-underline-offset: 3px; /* Slight gap between text and underline for readability */
+  text-decoration-thickness: 1px; /* Thin underline to keep it clean */
+}
+
+/* Visited links inside FAQ answers: dark grey so they feel "used" but still readable */
+.faq-answer a:visited {
+  color: #555555; /* Medium-dark grey — clearly different from unvisited, still readable on white */
+}
+
+/* Hover: use the site accent red so it still feels on-theme even on the white card */
+.faq-answer a:hover {
+  color: var(--accent-red); /* Red hover ties back to the site's color system */
+}
+
+/* ====
    DAMAGE CALC BLOCK
-   ===================== */
+   ==== */
 
 /* Monospace block used to display damage calculation examples */
 .damage-calc-example {
@@ -249,8 +274,95 @@
 }
 
 /* =====================
-   ANIMATIONS
+   NESTED CALC COLLAPSIBLE
    ===================== */
+
+/* Wrapper for the nested damage calc toggle inside an answer */
+.calc-collapsible {
+  /* Small top margin to separate it from the paragraph above */
+  margin-top: 0.8rem;
+  /* Rounded corners to match the FAQ item style */
+  border-radius: 4px;
+  /* Slightly darker border than the FAQ item */
+  border: 1px solid #d0d0d0;
+  /* Clip the content so rounded corners apply cleanly */
+  overflow: hidden;
+}
+
+/* The clickable header bar for the nested collapsible */
+.calc-toggle {
+  /* Fill the full width */
+  width: 100%;
+  /* Remove default button styling */
+  background: #e8e8e8;
+  border: none;
+  outline: none;
+  /* Comfortable padding */
+  padding: 0.6rem 1rem;
+  /* Left-align the label text */
+  text-align: left;
+  /* Use body font at a slightly smaller size */
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  /* Dark text */
+  color: #333;
+  /* Pointer cursor to indicate it's clickable */
+  cursor: pointer;
+  /* Needed to position the arrow absolutely */
+  position: relative;
+  /* Smooth background transition on hover */
+  transition: background 0.2s;
+}
+
+/* Slightly darker background on hover */
+.calc-toggle:hover {
+  background: #ddd;
+}
+
+/* The arrow icon inside the toggle button */
+.calc-arrow {
+  /* Absolute position on the right side */
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  /* Vertically center the arrow */
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #888;
+  /* Smooth rotation animation */
+  transition: transform 0.25s;
+}
+
+/* Rotate the arrow upward when the collapsible is open */
+.calc-collapsible.open .calc-arrow {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+/* The body of the collapsible — hidden by default */
+.calc-body {
+  /* Hidden until opened */
+  display: none;
+  /* Fade in when revealed */
+  animation: fadeIn 0.25s;
+}
+
+/* Show the body when the collapsible has the 'open' class */
+.calc-collapsible.open .calc-body {
+  display: block;
+}
+
+/* Remove the top margin from the damage-calc-example when nested inside the collapsible */
+.calc-collapsible .damage-calc-example {
+  margin-top: 0;
+  /* Slightly square off the top corners since the toggle bar is above */
+  border-radius: 0 0 4px 4px;
+}
+
+
+/* ====
+   ANIMATIONS
+   ==== */
 
 /* Fade-in animation used when an answer is revealed */
 @keyframes fadeIn {
@@ -258,9 +370,9 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* =====================
+/* ====
    RESPONSIVE
-   ===================== */
+   ==== */
 
 /* Adjustments for small screens */
 @media (max-width: 600px) {
