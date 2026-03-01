@@ -118,73 +118,225 @@
 
 
     <!-- ===================== MAIN CONTENT ===================== -->
-    <main class="main">
+<!-- ==== RACE TRACKER MODULE ==== -->
+<!-- Standalone section. Drop this in to replace the countdown hero when the event goes live. -->
+<!-- It has its own ember background, a "RACE IS LIVE" banner, the 5 tracks, and a deaths column. -->
+<section class="race-tracker-module" id="live-race-tracker">
 
-        <!-- ---- HERO BANNER ---- -->
-        <!-- Introduces the event with a title, date/time, and a short description -->
-        <section class="event-hero">
-            <div class="event-hero-bg"></div> <!-- Decorative radial gradient overlay -->
-            <div class="container event-hero-content">
-                <!-- Gold "LIVE EVENT" badge above the title -->
-                <span class="event-badge">🏆 Live Event</span>
+    <!-- Ember particle container — JS will inject the floating red dots into this div -->
+    <div class="tracker-embers" id="tracker-embers"></div>
 
-                <!-- Main page title -->
-                <h2 class="event-hero-title">Null Launch Day Event</h2>
+    <div class="container">
 
-                <!-- Short description of what the event is -->
-                <p class="event-hero-subtitle">
-                    Five of the best Nuzlocke streamers go head-to-head through Pokémon Null's
-                    <strong>Norman Split</strong> — the most interesting section of the game.
-                    Fewest deaths wins. Come watch the best players make the best lines, without regard to time.
-                </p>
+        <!-- "RACE IS LIVE" banner — replaces the countdown timer -->
+        <div class="tracker-live-banner">
+            <!-- Pulsing red dot to signal live status -->
+            <span class="live-dot"></span>
+            <!-- The main "live" label -->
+            <span class="live-label">The Race Is Live</span>
+            <!-- Compact timer showing 00:00:00 — styled like the countdown but smaller -->
+            <div class="live-timer" id="live-timer">
+                <span class="live-timer-block">
+                    <span class="live-timer-num" id="lt-hours">00</span>
+                    <span class="live-timer-unit">h</span>
+                </span>
+                <span class="live-timer-sep">:</span>
+                <span class="live-timer-block">
+                    <span class="live-timer-num" id="lt-minutes">00</span>
+                    <span class="live-timer-unit">m</span>
+                </span>
+                <span class="live-timer-sep">:</span>
+                <span class="live-timer-block">
+                    <span class="live-timer-num" id="lt-seconds">00</span>
+                    <span class="live-timer-unit">s</span>
+                </span>
+            </div>
+        </div>
 
-                <!-- Date, time, and platform info displayed as a row of "chips" -->
-                <div class="event-meta">
-                    <!-- Calendar icon + date -->
-                    <div class="event-meta-item">
-                        <span class="event-meta-icon">📅</span>
-                        <span>March 2nd, 2026</span>
+        <!-- Section heading -->
+        <h3 class="section-title">Race Progress</h3>
+        <p class="tracker-subtitle">
+            Tracking progress through the 13 fights of the Norman Split.
+            <strong>Fewest deaths wins.</strong>
+        </p>
+
+        <!-- The 5 racing lanes -->
+        <div class="race-lanes">
+
+            <!-- === LANE: MOXI === -->
+            <!-- data-runner-id is used by JS to find and update this row -->
+            <div class="race-lane" data-runner-id="moxi">
+
+                <!-- Left: Runner name + logo with their unique ring colour -->
+                <div class="lane-label">
+                    <!-- runner-ring-moxi applies the light-blue border, matching the runner card below -->
+                    <div class="lane-logo-wrap runner-ring-moxi">
+                        <img src="assets/images/logos/moxilogo.png" alt="" class="lane-logo" onerror="this.style.opacity='0'">
                     </div>
-                    <!-- Clock icon + time -->
-                    <div class="event-meta-item">
-                        <span class="event-meta-icon">🕑</span>
-                        <span>2:00 PM EST</span>
+                    <span class="lane-name">Moxi</span>
+                </div>
+
+                <!-- Middle: The track rail with ticks, finish flag, and moving token -->
+                <div class="lane-track">
+                    <!-- The horizontal background line -->
+                    <div class="track-rail"></div>
+
+                    <!-- 13 tick marks. JS counts these to compute token position. -->
+                    <div class="track-ticks">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
                     </div>
-                    <!-- Twitch icon + platform -->
-                    <div class="event-meta-item">
-                        <span class="event-meta-icon">📺</span>
-                        <!-- Opens pChal's Twitch in a new tab -->
-                        <a href="https://twitch.tv/pchal" target="_blank" rel="noopener" class="event-meta-link">
-                            twitch.tv/pchal
-                        </a>
+
+                    <!-- Finish flag at the far right -->
+                    <div class="track-finish" aria-hidden="true">🏁</div>
+
+                    <!-- Moving token. JS sets its `left` % to slide it along the track. -->
+                    <!-- transform: translateX(-50%) keeps the icon CENTRED on the tick, not left-justified -->
+                    <div class="runner-token" id="token-moxi">
+                        <img src="assets/images/logos/moxilogo.png" alt="Moxi" class="token-img runner-ring-moxi">
+                        <!-- Small label under the icon showing current fight number -->
+                        <span class="token-pos" id="pos-moxi">0/13</span>
                     </div>
                 </div>
 
-                <!-- Live countdown timer — updated every second by launch-race.js -->
-                <div class="event-countdown" id="event-countdown">
-                    <!-- Each unit (days/hours/minutes/seconds) gets its own block -->
-                    <div class="countdown-block">
-                        <span class="countdown-number" id="cd-days">--</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-block">
-                        <span class="countdown-number" id="cd-hours">--</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-block">
-                        <span class="countdown-number" id="cd-minutes">--</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-block">
-                        <span class="countdown-number" id="cd-seconds">--</span>
-                        <span class="countdown-label">Seconds</span>
-                    </div>
+                <!-- Right: Deaths counter -->
+                <div class="lane-deaths">
+                    <span class="death-label">Deaths</span>
+                    <!-- This number is updated by JS -->
+                    <span class="death-count" id="deaths-moxi">0</span>
                 </div>
             </div>
-        </section>
+            <!-- === END LANE: MOXI === -->
+
+
+            <!-- === LANE: FLYGONHG === -->
+            <div class="race-lane" data-runner-id="flygonhg">
+                <div class="lane-label">
+                    <!-- runner-ring-flygonhg applies the green border -->
+                    <div class="lane-logo-wrap runner-ring-flygonhg">
+                        <img src="assets/images/logos/flygonlogo.png" alt="" class="lane-logo" onerror="this.style.opacity='0'">
+                    </div>
+                    <span class="lane-name">FlygonHG</span>
+                </div>
+                <div class="lane-track">
+                    <div class="track-rail"></div>
+                    <div class="track-ticks">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="track-finish" aria-hidden="true">🏁</div>
+                    <div class="runner-token" id="token-flygonhg">
+                        <img src="assets/images/logos/flygonlogo.png" alt="FlygonHG" class="token-img runner-ring-flygonhg">
+                        <span class="token-pos" id="pos-flygonhg">0/13</span>
+                    </div>
+                </div>
+                <div class="lane-deaths">
+                    <span class="death-label">Deaths</span>
+                    <span class="death-count" id="deaths-flygonhg">0</span>
+                </div>
+            </div>
+            <!-- === END LANE: FLYGONHG === -->
+
+
+            <!-- === LANE: KYACOLOSSEUM === -->
+            <div class="race-lane" data-runner-id="kyacolosseum">
+                <div class="lane-label">
+                    <!-- runner-ring-kya applies the orange border -->
+                    <div class="lane-logo-wrap runner-ring-kya">
+                        <img src="assets/images/logos/kyalogo.png" alt="" class="lane-logo" onerror="this.style.opacity='0'">
+                    </div>
+                    <span class="lane-name">Kya</span>
+                </div>
+                <div class="lane-track">
+                    <div class="track-rail"></div>
+                    <div class="track-ticks">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="track-finish" aria-hidden="true">🏁</div>
+                    <div class="runner-token" id="token-kyacolosseum">
+                        <img src="assets/images/logos/kyalogo.png" alt="Kya" class="token-img runner-ring-kya">
+                        <span class="token-pos" id="pos-kyacolosseum">0/13</span>
+                    </div>
+                </div>
+                <div class="lane-deaths">
+                    <span class="death-label">Deaths</span>
+                    <span class="death-count" id="deaths-kyacolosseum">0</span>
+                </div>
+            </div>
+            <!-- === END LANE: KYACOLOSSEUM === -->
+
+
+            <!-- === LANE: DRAYANO === -->
+            <div class="race-lane" data-runner-id="drayano">
+                <div class="lane-label">
+                    <!-- runner-ring-drayano applies the purple border -->
+                    <div class="lane-logo-wrap runner-ring-drayano">
+                        <img src="assets/images/logos/drayanologo.png" alt="" class="lane-logo" onerror="this.style.opacity='0'">
+                    </div>
+                    <span class="lane-name">Drayano</span>
+                </div>
+                <div class="lane-track">
+                    <div class="track-rail"></div>
+                    <div class="track-ticks">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="track-finish" aria-hidden="true">🏁</div>
+                    <div class="runner-token" id="token-drayano">
+                        <img src="assets/images/logos/drayanologo.png" alt="Drayano" class="token-img runner-ring-drayano">
+                        <span class="token-pos" id="pos-drayano">0/13</span>
+                    </div>
+                </div>
+                <div class="lane-deaths">
+                    <span class="death-label">Deaths</span>
+                    <span class="death-count" id="deaths-drayano">0</span>
+                </div>
+            </div>
+            <!-- === END LANE: DRAYANO === -->
+
+
+            <!-- === LANE: BUHRITO === -->
+            <div class="race-lane" data-runner-id="buhrito">
+                <div class="lane-label">
+                    <!-- runner-ring-buhrito applies the yellow border -->
+                    <div class="lane-logo-wrap runner-ring-buhrito">
+                        <img src="assets/images/logos/buhritologo.png" alt="" class="lane-logo" onerror="this.style.opacity='0'">
+                    </div>
+                    <span class="lane-name">Buhrito</span>
+                </div>
+                <div class="lane-track">
+                    <div class="track-rail"></div>
+                    <div class="track-ticks">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="track-finish" aria-hidden="true">🏁</div>
+                    <div class="runner-token" id="token-buhrito">
+                        <img src="assets/images/logos/buhritologo.png" alt="Buhrito" class="token-img runner-ring-buhrito">
+                        <span class="token-pos" id="pos-buhrito">0/13</span>
+                    </div>
+                </div>
+                <div class="lane-deaths">
+                    <span class="death-label">Deaths</span>
+                    <span class="death-count" id="deaths-buhrito">0</span>
+                </div>
+            </div>
+            <!-- === END LANE: BUHRITO === -->
+
+        </div>
+        <!-- end .race-lanes -->
+
+    </div>
+    <!-- end .container -->
+
+</section>
+<!-- ==== END RACE TRACKER MODULE ==== -->
         <!-- ---- END HERO BANNER ---- -->
 
 
