@@ -177,11 +177,11 @@ if (cdDays && cdHours && cdMinutes && cdSeconds && cdWrapper) {
  * deaths:   how many Pokémon this runner has lost so far
  */
 const raceData = {
-    moxi:         { progress: 12, deaths: 12 },
-    flygonhg:     { progress: 7, deaths: 7 },
-    kyacolosseum: { progress: 6, deaths: 10 },
-    drayano:      { progress: 6, deaths: 2 },
-    buhrito:      { progress: 1, deaths: 0 }
+    kindle:       { progress: 0, deaths: 0 },
+    flygonhg:     { progress: 0, deaths: 0 },
+    kyacolosseum: { progress: 0, deaths: 0 },
+    drayano:      { progress: 0, deaths: 0 },
+    buhrito:      { progress: 0, deaths: 0 }
 };
 
 /**
@@ -190,7 +190,7 @@ const raceData = {
  * Call this once on load — it will reflect whatever values are in raceData above.
  */
 function updateRaceTracker() {
-    // Loop over every runner key in raceData (moxi, flygonhg, etc.)
+    // Loop over every runner key in raceData (kindle, flygonhg, etc.)
     for (const runner in raceData) {
         const data = raceData[runner]; // shorthand for this runner's { progress, deaths }
 
@@ -227,7 +227,7 @@ function updateRaceTracker() {
         }
 
         // --- DEATH COUNT ---
-        // Find the death count element for this runner (e.g. "deaths-moxi")
+        // Find the death count element for this runner (e.g. "deaths-kindle")
         const deathEl = document.getElementById(`deaths-${runner}`);
         if (deathEl) {
             const oldValue = parseInt(deathEl.textContent) || 0; // read the current displayed value

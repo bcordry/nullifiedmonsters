@@ -419,7 +419,7 @@
 }
 
 /* Per-runner ring colours — each runner gets a unique accent */
-.runner-ring-moxi      { border-color: #4fc3f7; } /* Light blue */
+.runner-ring-kindle      { border-color: #4fc3f7; } /* Light blue */
 .runner-ring-flygonhg  { border-color: #81c784; } /* Green (Flygon colours) */
 .runner-ring-kya       { border-color: #ff8a65; } /* Orange */
 .runner-ring-drayano   { border-color: #ce93d8; } /* Purple */
@@ -751,7 +751,7 @@
 /* Per-runner ring colours on the lane logo wrappers.
    We use box-shadow instead of border so overflow:hidden doesn't clip the ring.
    The first value (0 0 0 3px) creates a solid 3px ring just outside the circle. */
-.lane-logo-wrap.runner-ring-moxi     { box-shadow: 0 0 0 3px #4fc3f7; } /* Light blue */
+.lane-logo-wrap.runner-ring-kindle     { box-shadow: 0 0 0 3px #4fc3f7; } /* Light blue */
 .lane-logo-wrap.runner-ring-flygonhg { box-shadow: 0 0 0 3px #81c784; } /* Green */
 .lane-logo-wrap.runner-ring-kya      { box-shadow: 0 0 0 3px #ff8a65; } /* Orange */
 .lane-logo-wrap.runner-ring-drayano  { box-shadow: 0 0 0 3px #ce93d8; } /* Purple */
